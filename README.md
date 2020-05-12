@@ -4,7 +4,7 @@
 
 Sqlpiper buffers `map[string]interface{}` records into a number of concurrent insert goroutines, which do inserts as fast as possible and batch up data as it lags in the buffer.
 
-~50X faster than inserting records one at a time sequentially
+~250X faster than inserting records one at a time sequentially
 
 Usage:
 ```go
