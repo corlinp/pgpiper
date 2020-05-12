@@ -21,3 +21,5 @@ p.Close()
 In this example, a table called `fat_cats` will be created and the record piped in with a uid of 1.
 
 UIDs are unique. Adding to the same UID will overwrite the old data for that UID.
+
+*pgpiper barely works and is still under development*
