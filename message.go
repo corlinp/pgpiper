@@ -85,7 +85,6 @@ func (tp *TablePiper) inserter() error {
 		}
 		sb.WriteString(";")
 		// send to pg
-		fmt.Println(sb.String())
 		_, err := tp.db.Exec(sb.String(), values...)
 		if err != nil && strings.Contains(err.Error(), "does not exist") {
 			_, err = tp.db.Exec(tp.createTableSQL(recordExample))
@@ -134,7 +133,6 @@ func (tp *TablePiper) createTableSQL(r *Record) string {
 		sb.WriteString(getDatatype(v))
 	}
 	sb.WriteString(");")
-	fmt.Println(sb.String())
 	return sb.String()
 }
 
