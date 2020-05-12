@@ -1,11 +1,10 @@
-package main
+package pgpiper
 
 import (
 	"database/sql"
 	_ "github.com/lib/pq"
 	"github.com/pkg/errors"
 	"sync"
-	"time"
 )
 
 type Piper struct {
@@ -59,17 +58,6 @@ type TablePiper struct {
 func (tp *TablePiper) AddRecord(uid string, data map[string]interface{}) error {
 	if tp.intentToClose.Get() {
 		return errors.New("piper is closed")
-	}
-	for _, v := range data {
-		switch v := v.(type) {
-		case int:
-		case float64:
-		case bool:
-		case string:
-		case time.Time:
-		default:
-			return errors.Errorf("unsupported type %T", v)
-		}
 	}
 	rec := Record{
 		uid:    uid,
